@@ -6,11 +6,11 @@ class Conexao extends Model {
 
     public function Conecta() {
 
-        $host = ""; oraclescanscjf01/sml
-        $database = ""; producao
-        $login_db = ""; cn_treinamento_php
-        $senha_db = ""; -Btc,@3zY0xq.xPhCw3Ab{5
-        $db = oci_connect($login_db, $senha_db, $host, 'AL32UTF8'); //conecta ao mysql
+        $host = env('database.default.hostname');
+        $database = env('database.default.database');
+        $login_db = env('database.default.username'); 
+        $senha_db = env('database.default.password');
+        $db = oci_connect($login_db, $senha_db, $host, 'AL32UTF8'); 
 
         if (!$db) {
             echo "Erro: Na conexao do banco de dados oracle!<br />";

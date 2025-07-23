@@ -21,7 +21,7 @@ class App extends BaseConfig
 	| environments.
 	|
 	*/
-	public $baseURL = URL_BASE."/desenvolvimento/treinamento/tiago";
+	public $baseURL = URL_BASE."/plasc-contratos";
 
 	/*
 	|--------------------------------------------------------------------------
