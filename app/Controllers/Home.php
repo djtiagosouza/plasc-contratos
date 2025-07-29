@@ -37,7 +37,10 @@ class Home extends BaseController
                 "url_base" => base_url(),
                 "titulo" => 'Plasc-contratos'
             ];
-            return view('Contratos_index', $data);
+            echo view('Includes/Header', $data);
+            echo view('Dashboard');
+            echo view('Includes/Footer');
+
         } else {
             $mensagem = is_array($resultado) && isset($resultado['erro']) ? $resultado['erro'] : 'Erro ao processar login.';
             session()->setFlashdata('aviso', $mensagem);
