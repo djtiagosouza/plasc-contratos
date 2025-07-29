@@ -19,7 +19,7 @@ class Home extends BaseController
 		echo view("Login", $data);
 	}
 
-	 public function Login()
+	 public function login()
     {
         $usuario = strtoupper(trim($this->request->getPost("usuario")));
         $senha = $this->request->getPost("senha");

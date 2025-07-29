@@ -14,7 +14,7 @@ class Usuario extends Model
     }
 
 
-  public function Logar($usuario, $senha)
+  public function logar($usuario, $senha)
 {
     $usuario = strtoupper(trim($usuario));
 

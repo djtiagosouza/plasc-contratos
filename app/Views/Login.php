@@ -85,7 +85,7 @@
             </div>
         <?php endif; ?>
 
-        <form method="POST" action="<?= $url_base ?>/home/Login">
+        <form method="POST" action="<?= $url_base ?>/home/login">
             <?= csrf_field() ?>
 
             <div class="mb-3">
