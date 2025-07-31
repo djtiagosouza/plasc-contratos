@@ -37,9 +37,10 @@ class Home extends BaseController
                 "url_base" => base_url(),
                 "titulo" => 'Plasc-contratos'
             ];
-            echo view('Includes/Header', $data);
-            echo view('Dashboard');
-            echo view('Includes/Footer');
+            echo view('Includes/header', $data);
+            echo view('Includes/menu',$data);
+            echo view('dashboard');
+            echo view('Includes/footer',$data);
 
         } else {
             $mensagem = is_array($resultado) && isset($resultado['erro']) ? $resultado['erro'] : 'Erro ao processar login.';
