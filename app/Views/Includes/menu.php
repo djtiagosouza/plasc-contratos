@@ -11,7 +11,7 @@
                          <div class="profile-wrap">
 
 
-                             <p class="mnp-name">Aaron Chavez</p>
+                             <p class="mnp-name"><?= $usuario?></p>
 
                              </a>
                          </div>
@@ -21,24 +21,13 @@
                      <ul id="mainnav-menu" class="list-group">
 
 
-                         <li class="list-header">Navigation</li>
+                         <li class="list-header">Consultas</li>
 
-
-                         <li class="active-link">
-                             <a href="index.html">
-                                 <i class="demo-psi-home"></i>
-                                 <span class="menu-title">
-                                     <strong>Dashboard</strong>
-                                 </span>
-                             </a>
-                         </li>
-
-
-                         <li>
-                             <a href="#">
+                          <li>
+                             <a href="<?= $url_base ?>/home/Envelopes">
                                  <i class="demo-psi-split-vertical-2"></i>
                                  <span class="menu-title">
-                                     <strong>Layouts</strong>
+                                     <strong>Envelopes</strong>
                                  </span>
 
                              </a>
@@ -46,26 +35,52 @@
 
                          </li>
 
-
-                         <li>
-                             <a href="widgets.html">
-                                 <i class="demo-psi-gear-2"></i>
+                          <li >
+                             <a href="<?= $url_base ?>/home/Documentos">
+                                 <i class="demo-psi-home"></i>
                                  <span class="menu-title">
-                                     <strong>Widgets</strong>
+                                     <strong>Documentos</strong>
+                                 </span>
+                             </a>
+                         </li>
 
+
+                         <li >
+                             <a href="<?= $url_base ?>/home/Segnatarios">
+                                 <i class="demo-psi-home"></i>
+                                 <span class="menu-title">
+                                     <strong>Segnatarios</strong>
+                                 </span>
+                             </a>
+                         </li>
+
+                         <li >
+                             <a href="<?= $url_base ?>/home/Requisitos">
+                                 <i class="demo-psi-home"></i>
+                                 <span class="menu-title">
+                                     <strong>Requisitos</strong>
+                                 </span>
+                             </a>
+                         </li>
+
+                        <li >
+                             <a href="<?= $url_base ?>/home/Notificacoes">
+                                 <i class="demo-psi-home"></i>
+                                 <span class="menu-title">
+                                     <strong>Notificações</strong>
                                  </span>
                              </a>
                          </li>
 
                          <li class="list-divider"></li>
 
-                         <li class="list-header">Components</li>
+                         <li class="list-header">Complementares</li>
 
 
                          <li>
                              <a href="#">
                                  <i class="demo-psi-boot-2"></i>
-                                 <span class="menu-title">UI Elements</span>
+                                 <span class="menu-title">Eventos</span>
 
                              </a>
 
@@ -76,7 +91,7 @@
                          <li>
                              <a href="#">
                                  <i class="demo-psi-pen-5"></i>
-                                 <span class="menu-title">Forms</span>
+                                 <span class="menu-title">Modelos</span>
 
                              </a>
 
@@ -87,31 +102,23 @@
                          <li>
                              <a href="#">
                                  <i class="demo-psi-receipt-4"></i>
-                                 <span class="menu-title">Tables</span>
+                                 <span class="menu-title">Pastas</span>
 
                              </a>
 
 
-                         </li>
-
-
-                         <li>
-                             <a href="charts.html">
-                                 <i class="demo-psi-bar-chart"></i>
-                                 <span class="menu-title">Charts</span>
-                             </a>
                          </li>
 
                          <li class="list-divider"></li>
 
 
-                         <li class="list-header">More</li>
+                         <li class="list-header">Gestão de Acesso</li>
 
 
                          <li>
                              <a href="#">
                                  <i class="demo-psi-repair"></i>
-                                 <span class="menu-title">Miscellaneous</span>
+                                 <span class="menu-title">Usuários</span>
 
                              </a>
 
@@ -122,35 +129,14 @@
                          <li>
                              <a href="#">
                                  <i class="demo-psi-mail"></i>
-                                 <span class="menu-title">Email</span>
+                                 <span class="menu-title">Membros</span>
 
                              </a>
 
 
                          </li>
 
-                         <li>
-                             <a href="#">
-                                 <i class="demo-psi-file-html"></i>
-                                 <span class="menu-title">Pages</span>
-
-                             </a>
-
-
-                         </li>
-
-
-
-                         <li>
-                             <a href="#">
-                                 <i class="demo-psi-tactic"></i>
-                                 <span class="menu-title">Menu Level</span>
-
-                             </a>
-
-
-                         </li>
-
+                         
 
                          <li class="list-divider"></li>
 

@@ -74,7 +74,7 @@
 
     <div class="login-panel">
         <div style="width: 100%; text-align: center; margin-bottom: 20px; clear: both;">
-        <img src="<?= $url_base ?>/assets/img/Logo.png" alt="Logo PLASC" style="max-width: 150px; height: auto; display: inline-block;">
+        <img src="<?= $url_base ?>/assets/img/plasc.png" alt="Logo PLASC" style="max-width: 150px; height: auto; display: inline-block;">
     </div>
         <h1 class="mb-3 text-center">Contratos</h1>
         
@@ -85,7 +85,7 @@
             </div>
         <?php endif; ?>
 
-        <form method="POST" action="<?= $url_base ?>/home/login">
+        <form method="POST" action="<?= $url_base ?>/Home/login">
             <?= csrf_field() ?>
 
             <div class="mb-3">
