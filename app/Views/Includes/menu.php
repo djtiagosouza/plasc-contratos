@@ -21,7 +21,7 @@
                      <ul id="mainnav-menu" class="list-group">
 
 
-                         <li class="list-header">Consultas</li>
+                         <!-- <li class="list-header">Consultas</li>
 
                           <li>
                              <a href="<?= $url_base ?>/home/Envelopes">
@@ -64,23 +64,23 @@
                          </li>
 
                         <li >
-                             <a href="<?= $url_base ?>/home/Notificacoes">
+                             <a href="<?= $url_base ?>/home/Templates">
                                  <i class="demo-psi-home"></i>
                                  <span class="menu-title">
-                                     <strong>Notificações</strong>
+                                     <strong>Templates</strong>
                                  </span>
                              </a>
-                         </li>
+                         </li> -->
 
                          <li class="list-divider"></li>
 
-                         <li class="list-header">Complementares</li>
+                         <li class="list-header">Gerar Contratos</li>
 
 
                          <li>
-                             <a href="#">
+                             <a href="<?= $url_base ?>/home/GeraContrato">
                                  <i class="demo-psi-boot-2"></i>
-                                 <span class="menu-title">Eventos</span>
+                                 <span class="menu-title">Contrato</span>
 
                              </a>
 
@@ -88,21 +88,21 @@
                          </li>
 
 
-                         <li>
-                             <a href="#">
+                       <li>
+                             <a href="<?= $url_base?>/home/CriaPasta">
                                  <i class="demo-psi-pen-5"></i>
-                                 <span class="menu-title">Modelos</span>
+                                 <span class="menu-title">Criar Pasta</span>
 
                              </a>
 
 
-                         </li>
+                         </li> 
 
 
                          <li>
-                             <a href="#">
+                               <a href="<?= $url_base?>/home/CriaEnvelope">
                                  <i class="demo-psi-receipt-4"></i>
-                                 <span class="menu-title">Pastas</span>
+                                 <span class="menu-title">Cria Envelopes</span>
 
                              </a>
 
@@ -112,13 +112,13 @@
                          <li class="list-divider"></li>
 
 
-                         <li class="list-header">Gestão de Acesso</li>
+                         <li class="list-header">Criar Fluxo</li>
 
 
                          <li>
-                             <a href="#">
+                             <a href="<?= $url_base?>/home/CriaPasta">
                                  <i class="demo-psi-repair"></i>
-                                 <span class="menu-title">Usuários</span>
+                                 <span class="menu-title">Individual</span>
 
                              </a>
 
@@ -127,9 +127,9 @@
 
 
                          <li>
-                             <a href="#">
+                             <a href="<?= $url_base?>/C_Contratos/ListaEnvelopes">
                                  <i class="demo-psi-mail"></i>
-                                 <span class="menu-title">Membros</span>
+                                 <span class="menu-title">Empresarial</span>
 
                              </a>
 
