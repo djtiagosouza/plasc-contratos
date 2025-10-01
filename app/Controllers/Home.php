@@ -43,7 +43,7 @@ class Home extends BaseController
             ];
             echo view('Includes/header', $data);
             echo view('Includes/menu', $data);
-            echo view('dashboard');
+            echo view('paginainicial');
             echo view('Includes/footer', $data);
         } else {
             $mensagem = is_array($resultado) && isset($resultado['erro']) ? $resultado['erro'] : 'Erro ao processar login.';
