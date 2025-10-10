@@ -1,0 +1,374 @@
+
+* {
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+html {
+  height: 100%;
+  font-size: 16px;
+}
+
+body {
+  height: 100%;
+  background: #F3F4F8;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: white;
+  box-shadow: inset 0 -1px 0 0 #edeef4;
+}
+
+aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 200px;
+  background: #046cc2;
+  
+}
+aside .brand {
+  padding: 5px 10px 5px;
+}
+aside .brand a  {
+  display: block;
+  width: 70px;
+  height: 70px;
+  margin: 0 auto;
+  padding: 0;
+  font-size: 2.5rem;
+  font-weight: 300;
+  font-style: italic;
+  text-align: center;
+  text-decoration: none !important;
+  line-height: 62px;
+  color: #ffffff;
+  background: #11cedb;
+  border-radius: 100%;
+}
+aside .brand p  {
+ font-size: 1.5rem;
+ text-align: center;
+ color: #ffffff;   
+}
+aside button.app-menu__button {
+  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 15px;
+  padding: 14px;
+  background: none;
+  border: none;
+  border-radius: 100%;
+  outline: none !important;
+}
+aside button.app-menu__button:hover:not(.is-expanded) .app-icon__component:first-child {
+  -webkit-animation: moshpit-1 0.25s ease-in-out infinite alternate;
+          animation: moshpit-1 0.25s ease-in-out infinite alternate;
+}
+aside button.app-menu__button:hover:not(.is-expanded) .app-icon__component:nth-child(3) {
+  -webkit-animation: moshpit-2 0.25s ease-in-out infinite alternate;
+          animation: moshpit-2 0.25s ease-in-out infinite alternate;
+}
+aside button.app-menu__button:hover:not(.is-expanded) .app-icon__component:nth-child(7) {
+  -webkit-animation: moshpit-3 0.25s ease-in-out infinite alternate;
+          animation: moshpit-3 0.25s ease-in-out infinite alternate;
+}
+aside button.app-menu__button:hover:not(.is-expanded) .app-icon__component:nth-child(9) {
+  -webkit-animation: moshpit-4 0.25s ease-in-out infinite alternate;
+          animation: moshpit-4 0.25s ease-in-out infinite alternate;
+}
+aside button.app-menu__button .app-icon {
+  position: relative;
+  display: block;
+  width: 22px;
+  height: 22px;
+  margin: 0 0 0 0px;
+  padding: 0;
+  background: none;
+  border: none;
+}
+aside button.app-menu__button .app-icon .app-icon__component {
+  display: inline-block;
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #7a9ab6;
+  border-radius: 100%;
+  transition: transform 0.2s ease-out, background 0.2s ease-out;
+}
+aside button.app-menu__button .app-icon .app-icon__component:first-child {
+  top: 2px;
+  left: 2px;
+}
+aside button.app-menu__button .app-icon .app-icon__component:nth-child(2) {
+  top: 2px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  transform: translate3d(-50%, 0, 0);
+}
+aside button.app-menu__button .app-icon .app-icon__component:nth-child(3) {
+  top: 2px;
+  right: 2px;
+}
+aside button.app-menu__button .app-icon .app-icon__component:nth-child(4) {
+  top: 50%;
+  left: 2px;
+  transform: translate(0, -50%);
+  transform: translate3d(0, -50%, 0);
+}
+aside button.app-menu__button .app-icon .app-icon__component:nth-child(5) {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform: translate3d(-50%, -50%, 0);
+}
+aside button.app-menu__button .app-icon .app-icon__component:nth-child(6) {
+  top: 50%;
+  right: 2px;
+  transform: translate(0, -50%);
+  transform: translate3d(0, -50%, 0);
+}
+aside button.app-menu__button .app-icon .app-icon__component:nth-child(7) {
+  bottom: 2px;
+  left: 2px;
+}
+aside button.app-menu__button .app-icon .app-icon__component:nth-child(8) {
+  bottom: 2px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  transform: translate3d(-50%, 0, 0);
+}
+aside button.app-menu__button .app-icon .app-icon__component:nth-child(9) {
+  bottom: 2px;
+  right: 2px;
+}
+aside button.app-menu__button.is-expanded .app-icon__component {
+  background: rgba(185, 204, 220, 0.8);
+}
+aside button.app-menu__button.is-expanded .app-icon__component:first-child {
+  transform: translate(3px, 3px) scale(1);
+}
+aside button.app-menu__button.is-expanded .app-icon__component:nth-child(2) {
+  transform: translate(calc(-50% - 9px), -1px) scale(1);
+}
+aside button.app-menu__button.is-expanded .app-icon__component:nth-child(3) {
+  transform: translate(-3px, 3px) scale(1);
+}
+aside button.app-menu__button.is-expanded .app-icon__component:nth-child(4) {
+  transform: translate(-2px, calc(-50% + 8px)) scale(1);
+}
+aside button.app-menu__button.is-expanded .app-icon__component:nth-child(5) {
+  transform: translate(-50%, -50%) scale(1);
+}
+aside button.app-menu__button.is-expanded .app-icon__component:nth-child(6) {
+  transform: translate(2px, calc(-50% - 8px)) scale(1);
+}
+aside button.app-menu__button.is-expanded .app-icon__component:nth-child(7) {
+  transform: translate(3px, -3px) scale(1);
+}
+aside button.app-menu__button.is-expanded .app-icon__component:nth-child(8) {
+  transform: translate(calc(-50% + 9px), 1px) scale(1);
+}
+aside button.app-menu__button.is-expanded .app-icon__component:nth-child(9) {
+  transform: translate(-3px, -3px) scale(1);
+}
+aside .menu-collapse {
+  display: block;
+  width: 100%;
+  padding: 6px 20px;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: left;
+  color: #012c4e;
+  background: none;
+  border: none;
+  outline: none !important;
+}
+aside .menu-collapse.collapsed .caret {
+  transform: rotate(-90deg);
+}
+aside .menu-collapse .caret {
+  margin-right: 6px;
+  transform-origin: center center;
+  transition: transform 0.2s ease-in;
+}
+aside nav {
+  max-height: calc(100vh - 145px);
+  overflow: auto;
+  /* Track */
+  /* Handle */
+}
+aside nav::-webkit-scrollbar {
+  width: 6px;
+}
+aside nav::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+aside nav::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #111111;
+}
+aside ul.nav {
+  margin-bottom: 25px;
+}
+aside ul.nav li a {
+  display: block;
+  position: relative;
+  padding-left: 50px;
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.2px;
+  color: #eef0f1;
+}
+aside ul.nav li a:hover {
+  color: rgba(15, 15, 15, 0.8);
+  background: none;
+}
+aside ul.nav li a:focus {
+  background: none;
+}
+aside ul.nav li a svg {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  transform: translate(0, -50%);
+  transform: translate3d(0, -50%, 0);
+}
+aside ul.nav li a .lnr-star {
+  margin-top: -1px;
+}
+aside ul.nav li a span {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  width: 20px;
+  height: 20px;
+  margin-left: -1px;
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-align: center;
+  line-height: 1.1rem;
+  transform: translate(0, -50%);
+  transform: translate3d(0, -50%, 0);
+}
+aside ul.nav li.active a {
+  color: rgba(185, 204, 220, 0.8);
+  background: rgba(185, 204, 220, 0.1);
+}
+
+@-webkit-keyframes moshpit-1 {
+  from {
+    transform: translate(0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate(-2px, -2px);
+    transform: translate3d(-2px, -2px, 0);
+  }
+}
+
+@keyframes moshpit-1 {
+  from {
+    transform: translate(0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate(-2px, -2px);
+    transform: translate3d(-2px, -2px, 0);
+  }
+}
+@-webkit-keyframes moshpit-2 {
+  from {
+    transform: translate(0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate(2px, -2px);
+    transform: translate3d(2px, -2px, 0);
+  }
+}
+@keyframes moshpit-2 {
+  from {
+    transform: translate(0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate(2px, -2px);
+    transform: translate3d(2px, -2px, 0);
+  }
+}
+@-webkit-keyframes moshpit-3 {
+  from {
+    transform: translate(0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate(-2px, 2px);
+    transform: translate3d(-2px, 2px, 0);
+  }
+}
+@keyframes moshpit-3 {
+  from {
+    transform: translate(0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate(-2px, 2px);
+    transform: translate3d(-2px, 2px, 0);
+  }
+}
+@-webkit-keyframes moshpit-4 {
+  from {
+    transform: translate(0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate(2px, 2px);
+    transform: translate3d(2px, 2px, 0);
+  }
+}
+@keyframes moshpit-4 {
+  from {
+    transform: translate(0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate(2px, 2px);
+    transform: translate3d(2px, 2px, 0);
+  }
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #f5f6f7;
+  color: #046cc2;
+  text-align: center;
+  padding: 2px 0;
+  font-size: 14px;
+  z-index: 100;
+}
+.linha-vermelha {
+  border: none !important;
+  border-top: 3px solid crimson !important;
+  height: 0 !important;
+  color: #ec3d11;
+}

@@ -1,0 +1,111 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 40px;
+    text-align: center;
+}
+
+.titulo {
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.documentos-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.metro-tile {
+    width: 180px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0c0c0c;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    text-align: center;
+    padding: 10px;
+}
+
+
+
+
+.metro-tile:hover {
+    transform: scale(1.05);
+}
+
+/* Paleta de cores */
+.tile-blue       { background-color: #007bff; } /* Azul */
+.tile-green      { background-color: #28a745; } /* Verde */
+.tile-red        { background-color: #dc3545; } /* Vermelho */
+.tile-orange     { background-color: #fd7e14; } /* Laranja */
+.tile-purple     { background-color: #6f42c1; } /* Roxo */
+.tile-cyan       { background-color: #17a2b8; } /* Ciano */
+.tile-pink       { background-color: #e83e8c; } /* Rosa */
+.tile-brown      { background-color: #795548; } /* Marrom */
+.tile-gray       { background-color: #6c757d; } /* Cinza */
+.tile-teal       { background-color: #20c997; } /* Verde água */
+.tile-lime       { background-color: #cddc39; } /* Amarelo limão */
+.tile-deeporange { background-color: #ff5722; } /* Laranja escuro */
+.tile-indigo     { background-color: #3f51b5; } /* Azul índigo */
+.tile-amber      { background-color: #ffc107; } /* Amarelo forte */
+.tile-lightblue  { background-color: #03a9f4; } /* Azul claro */
+.tile-deeppurple { background-color: #673ab7; } /* Roxo escuro */
+.tile-lightgreen { background-color: #8bc34a; } /* Verde claro */
+.tile-deepteal   { background-color: #009688; } /* Verde petróleo */
+.tile-darkgray   { background-color: #424242; } /* Cinza escuro */
+.tile-gold       { background-color: #b8860b; } /* Dourado */
+
+/* Container e título */
+#content-container h1 {
+  color: #2c3e50;
+  font-weight: 700;
+}
+
+/* Formulário */
+.form-contrato {
+  background: #f9f9f9;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* Inputs */
+.form-contrato .form-control {
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.form-contrato .form-control:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+/* Botões */
+.form-contrato .btn {
+  padding: 12px 25px;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.form-contrato .btn-primary:hover {
+  background-color: #2980b9;
+}
+
+.form-contrato .btn-secondary:hover {
+  background-color: #d0d7de;
+}
+

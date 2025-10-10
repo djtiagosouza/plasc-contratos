@@ -112,11 +112,11 @@
                          <li class="list-divider"></li>
 
 
-                         <li class="list-header">Criar Fluxo</li>
+                         <li class="list-header">Gerar Contrato</li>
 
 
                          <li>
-                             <a href="<?= $url_base?>/home/CriaPasta">
+                             <a href="<?= $url_base?>/home/GeraContratoIndividual">
                                  <i class="demo-psi-repair"></i>
                                  <span class="menu-title">Individual</span>
 
@@ -127,7 +127,7 @@
 
 
                          <li>
-                             <a href="<?= $url_base?>/C_Contratos/ListaEnvelopes">
+                             <a href="<?= $url_base?>/home/GeraContratoEmpresarial">
                                  <i class="demo-psi-mail"></i>
                                  <span class="menu-title">Empresarial</span>
 

@@ -1,5 +1,15 @@
-<div id="content-container">
-    <h1>Bem vindos </h1>
-
-   
+<div class='dashboard-app'>     
+        <div class='dashboard-content'>
+            <div class='container'>
+                <div class='card'>
+                    <div class='card-header'>
+                        <h1>Bem Vindos</h1>
+                    </div>
+                    <div class='card-body'>
+                        <p>Plano de saúde Plasc</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -14,7 +14,7 @@ class Home extends BaseController
 
         $data = array(
             "url_base" => base_url(),
-            "titulo" => "home",
+            "titulo" => "Home",
             "mensagem" => session()->getFlashdata('aviso')
         );
         echo view("Login", $data);
@@ -42,7 +42,7 @@ class Home extends BaseController
 
             ];
             echo view('Includes/header', $data);
-            echo view('Includes/menu', $data);
+            echo view('Includes/menu2', $data);
             echo view('paginainicial');
             echo view('Includes/footer', $data);
         } else {
@@ -54,7 +54,7 @@ class Home extends BaseController
     }
 
     
-    function GeraContrato()
+    function GeraContratoIndividual()
     {
          $usuarioLogado = session()->get('usuario_logado');
         $data = [
@@ -64,8 +64,23 @@ class Home extends BaseController
 
         ];
         echo view('Includes/header', $data);
-        echo view('Includes/menu', $data);
-        echo view("geracontrato", $data);
+        echo view('Includes/menu2', $data);
+        echo view("Individual/seleciona_contrato_ind", $data);
+        echo view('Includes/footer', $data);
+    }
+
+    function GeraContratoEmpresarial()
+    {
+         $usuarioLogado = session()->get('usuario_logado');
+        $data = [
+            "url_base" => base_url(),
+            "titulo" => 'Plasc-contratos',
+            "usuario" => $usuarioLogado
+
+        ];
+        echo view('Includes/header', $data);
+        echo view('Includes/menu2', $data);
+        echo view("Empresarial/seleciona_contrato_emp", $data);
         echo view('Includes/footer', $data);
     }
 
@@ -100,6 +115,23 @@ class Home extends BaseController
         echo view("criaenvelopes", $data);
         echo view('Includes/footer', $data);
     }
+
+    public function GeraContrato(){
+    $plano = $this->request->getGet('tipo');
+    $usuarioLogado = session()->get('usuario_logado');
+         $data = [
+            "url_base" => base_url(),
+            "titulo" => 'Plasc-contratos',
+            "usuario" => $usuarioLogado,
+            "plano" => $plano
+
+        ];
+        echo view('Includes/header', $data);
+        echo view('Includes/menu2', $data);
+        echo view("geracontrato", $data);
+        echo view('Includes/footer', $data);
+    }
+
 }
 
 
