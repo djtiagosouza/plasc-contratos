@@ -21,4 +21,21 @@ class Conexao extends Model {
         return $db;
     }
 
+    public function Conectasml() {
+
+        $host = env('database.tests.hostname');
+        $database = env('database.tests.database');
+        $login_db = env('database.tests.username'); 
+        $senha_db = env('database.tests.password');
+        $db = oci_connect($login_db, $senha_db, $host, 'AL32UTF8'); 
+
+        if (!$db) {
+            echo "Erro: Na conexao do banco de dados oracle!<br />";
+            $e = oci_error();
+            trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+            print_r(htmlentities($e['message'], ENT_QUOTES));
+        }
+        return $db;
+    }
+
 }

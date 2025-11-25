@@ -14,6 +14,7 @@ class Autoload extends \CodeIgniter\Config\AutoloadConfig
 	public $psr4 = [];
 
 	public $classmap = [];
+	public $helpers = ['form'];
 
 	//--------------------------------------------------------------------
 

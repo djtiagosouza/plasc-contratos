@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Models\Usuario;
 use App\Models\Conexao;
 
+helper('form');
+
 class Home extends BaseController
 {
 
@@ -20,6 +22,21 @@ class Home extends BaseController
         echo view("Login", $data);
     }
 
+    public function Principal()
+    {
+
+       $data = [
+                "url_base" => base_url(),
+                "titulo" => 'Plasc-contratos'
+
+
+            ];
+            echo view('Includes/header', $data);
+            echo view('Includes/menu2', $data);
+            echo view('paginainicial');
+            echo view('Includes/footer', $data);
+    }
+
     public function login()
     {
         $usuario = strtoupper(trim($this->request->getPost("usuario")));
@@ -29,7 +46,7 @@ class Home extends BaseController
         $conecta = $conexao->Conecta();
         $logar = new Usuario($conecta);
         $resultado = $logar->Logar($usuario, $senha);
-        $usuarioLogado = session()->get('usuario_logado');
+
         if (is_array($resultado) && !isset($resultado['erro'])) {
             $session = session();
             $session->set('usuario_logado', $resultado['usuario']);
@@ -37,8 +54,8 @@ class Home extends BaseController
 
             $data = [
                 "url_base" => base_url(),
-                "titulo" => 'Plasc-contratos',
-                "usuario" => $usuarioLogado
+                "titulo" => 'Plasc-contratos'
+
 
             ];
             echo view('Includes/header', $data);
@@ -53,10 +70,19 @@ class Home extends BaseController
         }
     }
 
-    
+    public function logout()
+    {
+        $session = session();
+        $session->destroy(); // <-- Apaga toda a sessão
+        return redirect()->to(base_url()); // Volta para a tela de login
+    }
+
+
+
+
     function GeraContratoIndividual()
     {
-         $usuarioLogado = session()->get('usuario_logado');
+        $usuarioLogado = session()->get('usuario_logado');
         $data = [
             "url_base" => base_url(),
             "titulo" => 'Plasc-contratos',
@@ -71,7 +97,7 @@ class Home extends BaseController
 
     function GeraContratoEmpresarial()
     {
-         $usuarioLogado = session()->get('usuario_logado');
+        $usuarioLogado = session()->get('usuario_logado');
         $data = [
             "url_base" => base_url(),
             "titulo" => 'Plasc-contratos',
@@ -84,10 +110,10 @@ class Home extends BaseController
         echo view('Includes/footer', $data);
     }
 
-     function CriaPasta()
+    function CriaPasta()
     {
-         $usuarioLogado = session()->get('usuario_logado');
-         $data = [
+        $usuarioLogado = session()->get('usuario_logado');
+        $data = [
             "url_base" => base_url(),
             "titulo" => 'Plasc-contratos',
             "usuario" => $usuarioLogado
@@ -99,11 +125,11 @@ class Home extends BaseController
         echo view('Includes/footer', $data);
     }
 
-         function CriaEnvelope()
+    function CriaEnvelope()
     {
-         $usuarioLogado = session()->get('usuario_logado');
-         $idpasta =  session()->getFlashdata('subpasta_id');;
-         $data = [
+        $usuarioLogado = session()->get('usuario_logado');
+        $idpasta =  session()->getFlashdata('subpasta_id');;
+        $data = [
             "url_base" => base_url(),
             "titulo" => 'Plasc-contratos',
             "usuario" => $usuarioLogado,
@@ -116,14 +142,14 @@ class Home extends BaseController
         echo view('Includes/footer', $data);
     }
 
-    public function GeraContrato(){
-    $plano = $this->request->getGet('tipo');
-    $usuarioLogado = session()->get('usuario_logado');
-         $data = [
+    public function GeraContrato()
+    {
+
+        $usuarioLogado = session()->get('usuario_logado');
+        $data = [
             "url_base" => base_url(),
             "titulo" => 'Plasc-contratos',
-            "usuario" => $usuarioLogado,
-            "plano" => $plano
+            "usuario" => $usuarioLogado
 
         ];
         echo view('Includes/header', $data);
@@ -132,6 +158,19 @@ class Home extends BaseController
         echo view('Includes/footer', $data);
     }
 
+    public function GeraAdesao()
+    {
+
+        $usuarioLogado = session()->get('usuario_logado');
+        $data = [
+            "url_base" => base_url(),
+            "titulo" => 'Plasc-contratos',
+            "usuario" => $usuarioLogado
+
+        ];
+        echo view('Includes/header', $data);
+        echo view('Includes/menu2', $data);
+        echo view("geraadesao", $data);
+        echo view('Includes/footer', $data);
+    }
 }
-
-

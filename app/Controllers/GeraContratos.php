@@ -12,6 +12,7 @@ class GeraContratos extends BaseController
     public function Gera_Contrato()
     {
         //variaveis de controle
+        helper('form');
         $nome = $this->request->getPost('nome');
         $filiacao = $this->request->getPost('filiacao');
         $cpf = $this->request->getPost('cpf');
@@ -29,6 +30,9 @@ class GeraContratos extends BaseController
         $usuarioLogado = session()->get('usuario_logado');
 
         $nome_pasta = $nome . '-' . $cpf;
+
+        $valor = $this->request->getPost('id_modelo');
+        list($template_id, $template_nome) = explode('|', $valor);
 
         $access_toker = '53797467-a4d1-4e76-8726-47b56815d53e';
         $folder_id = '659109a3-7ebf-4aee-8f39-6988a689f16c'; //da pasta individual
@@ -76,13 +80,12 @@ class GeraContratos extends BaseController
 
         if (!isset($resultado_pasta['data']['id'])) {
 
-            return redirect()->back()->with('erro', 'Erro ao criar a pasta!');
+            return redirect()->back()->withInput()->with('erro', 'PASTA NÃO CRIADA!');
         }
 
         //inicio da criacao do envelope
 
         $id_pasta = $resultado_pasta['data']['id'];
-        $nome_envelope = $this->request->getPost('contrato');
         $formato_data = date(DATE_RFC3339, strtotime('+7 days'));
         $url = "https://app.clicksign.com/api/v3/envelopes";
 
@@ -90,7 +93,7 @@ class GeraContratos extends BaseController
             "data" => [
                 "type" => "envelopes",
                 "attributes" => [
-                    "name" => $nome_envelope,
+                    "name" => $template_nome,
                     "locale" => "pt-BR",
                     "auto_close" => true,
                     "remind_interval" => 3,
@@ -134,13 +137,12 @@ class GeraContratos extends BaseController
 
         if (!isset($resultado_envelope['data']['id'])) {
 
-            return redirect()->back()->with('erro', 'Erro ao criar o envelope!');
+            return redirect()->back()->withInput()->with('erro', 'Erro ao criar o envelope!');
         }
 
-        //incio da criacao do medelo
+        //incio da criacao do modelo
 
         $id_envelope = $resultado_envelope['data']['id'];
-        $template_id = $this->request->getPost('id_modelo');
         $url = "https://app.clicksign.com/api/v3/envelopes/$id_envelope/documents";
 
         $dados = [
@@ -165,7 +167,7 @@ class GeraContratos extends BaseController
                             "Telefone"          => $telefone
                         ]
                     ],
-                    "filename" => $this->request->getPost("nome_modelo")
+                    "filename" => $template_nome . '.docx'
                 ]
             ]
         ];
@@ -193,7 +195,9 @@ class GeraContratos extends BaseController
 
         if (!isset($resultado_modelo['data']['id'])) {
 
-            return redirect()->back()->with('erro', 'Erro ao criar o contrato');
+            return redirect()->back()->withInput()->with('erro', 'Erro ao criar o contrato');
+            //var_dump($template_id, $id_envelope);
+
         }
 
         //inicio cria segnatario
@@ -219,12 +223,14 @@ class GeraContratos extends BaseController
             ]
         ];
 
+        $dados_api = json_encode($dados);
+
         $curl = curl_init();
         curl_setopt_array($curl, [
             CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => $dados,
+            CURLOPT_POSTFIELDS => $dados_api,
             CURLOPT_HTTPHEADER => [
                 "Authorization: $access_toker",
                 "Content-Type: application/vnd.api+json",
@@ -236,12 +242,13 @@ class GeraContratos extends BaseController
         $resposta = curl_exec($curl);
         curl_close($curl);
         $resusltado_segnatario = json_decode($resposta, true);
-
+        //var_dump($resusltado_segnatario);
         //fim cria segnatario
 
         if (!isset($resusltado_segnatario['data']['id'])) {
 
-            return redirect()->back()->with('erro', 'Erro ao Inserir Segnatario!');
+            return redirect()->back()->withInput()->with('erro', 'Erro ao Inserir Segnatario!');
+            //var_dump($template_id, $id_envelope);
         }
 
         //inicio qualificacao
@@ -277,12 +284,14 @@ class GeraContratos extends BaseController
 
         ];
 
+        $dados_api = json_encode($dados);
+
         $curl = curl_init();
         curl_setopt_array($curl, [
             CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => $dados,
+            CURLOPT_POSTFIELDS => $dados_api,
             CURLOPT_HTTPHEADER => [
                 "Authorization: $access_toker",
                 "Content-Type: application/vnd.api+json",
@@ -349,13 +358,22 @@ class GeraContratos extends BaseController
         curl_close($curl);
         $resultado = json_decode($resposta, true);
 
-        if (!isset($result['data']['id'])) {
+        if (!isset($resultado['data']['id'])) {
 
-            return redirect()->back()->with('erro', 'Erro ao inserir a autenticação!');
+            return redirect()->back()->withInput()->with('erro', 'Erro ao inserir a autenticação!');
         }
+
+        session()->set([
+            'id_envelope' => $id_envelope,
+            'id_pasta' => $id_pasta,
+            'id_modelo' => $id_modelo,
+            'nome_pasta' => $nome_pasta,
+            'template_id' => $template_id,
+            'id_titular' => $id_segnatario
+        ]);
         //return $result;
-        $this->Ativar($id_envelope,$access_toker);
-        $this->Notificacao($id_envelope,$access_toker);
+        $this->Ativar($id_envelope, $access_toker);
+        $this->Notificacao($id_envelope, $access_toker);
 
         $usuarioLogado = session()->get('usuario_logado');
         $data = [
@@ -366,17 +384,17 @@ class GeraContratos extends BaseController
         ];
 
         echo view('Includes/header', $data);
-        echo view('Includes/menu', $data);
+        echo view('Includes/menu2', $data);
         echo view("notificacao", $data);
         echo view('Includes/footer', $data);
     }
 
 
 
-    public function Ativar($envelope_id,$access_toker)
+    public function Ativar($envelope_id, $access_toker)
     {
 
-        
+
         $url = "https://app.clicksign.com/api/v3/envelopes/$envelope_id";
 
 
@@ -411,10 +429,10 @@ class GeraContratos extends BaseController
 
         // print_r ($result);
     }
-    public function Notificacao($envelope_id,$access_toker)
+    public function Notificacao($envelope_id, $access_toker)
     {
 
-      
+
         $url = "https://app.clicksign.com/api/v3/envelopes/$envelope_id/notifications";
 
         $dados_json = json_encode([
