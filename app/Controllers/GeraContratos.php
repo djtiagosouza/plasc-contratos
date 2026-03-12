@@ -11,7 +11,7 @@ class GeraContratos extends BaseController
 
     public function Gera_Contrato()
     {
-        //variaveis de controle
+        //variaveis de controle vindas do formulario de criar contrato
         helper('form');
         $nome = $this->request->getPost('nome');
         $filiacao = $this->request->getPost('filiacao');
@@ -30,6 +30,10 @@ class GeraContratos extends BaseController
         $usuarioLogado = session()->get('usuario_logado');
 
         $nome_pasta = $nome . '-' . $cpf;
+
+        $nascimento_formatada = $data_nascimento
+                            ? date('d/m/Y H:i', strtotime($data_nascimento))
+                            : 'N/A';
 
         $valor = $this->request->getPost('id_modelo');
         list($template_id, $template_nome) = explode('|', $valor);
@@ -163,8 +167,8 @@ class GeraContratos extends BaseController
                             "UF"                => $uf,
                             "CEP"               => $cep,
                             "e-mail"            => $email,
-                            "Data de Nascimento" => $data_nascimento,
-                            "Telefone"          => $telefone
+                            "Data de Nascimento" => $nascimento_formatada,
+                            "Fones"          => $telefone
                         ]
                     ],
                     "filename" => $template_nome . '.docx'
@@ -380,10 +384,11 @@ class GeraContratos extends BaseController
             "url_base" => base_url(),
             "titulo" => 'Plasc-contratos',
             "usuario" => $usuarioLogado,
+            'mensagem' => 'Contrato criado '
 
         ];
 
-        echo view('Includes/header', $data);
+        echo view('Includes/head', $data);
         echo view('Includes/menu2', $data);
         echo view("notificacao", $data);
         echo view('Includes/footer', $data);

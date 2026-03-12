@@ -1,4 +1,5 @@
-<div id="content-container">
+<main class="grid grid-main">
+<div class="content-container">
   <h1>Dados do Contrato</h1>
 
 
@@ -84,15 +85,14 @@
       <label>Plano
         <select name="id_modelo" required>
           <option value="">Selecione...</option>
-          <option value="1dc9ed77-e41e-4b0c-bdd4-71c9eb51cc65" <?= set_select('id_modelo', '1dc9ed77-e41e-4b0c-bdd4-71c9eb51cc65') ?>>Multipasc IX Enfermaria</option>
-          <option value="copart.php" <?= set_select('plano', 'copart.php') ?>>Multipasc X COPART (referência)</option>
-          <option value="xix_30.php" <?= set_select('plano', 'xix_30.php') ?>>Multipasc XIX - 30</option>
-          <option value="xix_50.php" <?= set_select('plano', 'xix_50.php') ?>>Multipasc XIX - 50</option>
-          <option value="xxii_30.php" <?= set_select('plano', 'xxii_30.php') ?>>Multipasc XXII - 30</option>
-          <option value="xxii_50.php" <?= set_select('plano', 'xxii_50.php') ?>>Multipasc XXII - 50</option>
-          <option value="plasc2_30.php" <?= set_select('plano', 'plasc2_30.php') ?>>Plasc 2 - 30</option>
-          <option value="6445e278-d832-4c3b-8635-f9acd542c434|Plasc 2 - 50" <?= set_select('plano', 'Plasc 2 - 50') ?>>Plasc 2 - 50</option>
-          <option value="declaracao_saude.php" <?= set_select('plano', 'declaracao_saude.php') ?>>PLASC - Declaração de Saúde</option>
+          <option value="42fffd5b-c3a6-422b-b5f5-cb2ab379cdf1|IND - MULTIPLASC IX ENF" <?= set_select('id_modelo', '42fffd5b-c3a6-422b-b5f5-cb2ab379cdf1') ?>>IND - MULTIPLASC IX ENF</option>
+          <option value="66e6ecdf-3b99-4735-873a-2d672ea2f216|IND - MULTIPLASC XIX APT 30%" <?= set_select('id_modelo', '66e6ecdf-3b99-4735-873a-2d672ea2f216') ?>>IND - MULTIPLASC XIX APT 30%</option>
+          <option value="495cfa1c-38c8-4b2b-865f-0e05f1e16a8a|IND - MULTIPLASC XIX APT 50%" <?= set_select('id_modelo', '495cfa1c-38c8-4b2b-865f-0e05f1e16a8a') ?>>ND - MULTIPLASC XIX APT 50%</option>
+          <option value="f71f9cc8-98c9-4152-ac2c-bbf95e54707c|IND - MULTIPLASC XXII ENF 30%" <?= set_select('id_modelo', 'f71f9cc8-98c9-4152-ac2c-bbf95e54707c') ?>>IND - MULTIPLASC XXII ENF 30%</option>
+          <option value="320270bb-949e-4f6b-a339-4ea43682f832|IND - MULTIPLASC XXII ENF 50%" <?= set_select('id_modelo', '320270bb-949e-4f6b-a339-4ea43682f832') ?>>IND - MULTIPLASC XXII ENF 50%</option>
+          <option value="cc6d6025-2b9d-4e1a-ad7f-0b3ba72c838b|IND - PLASC 2 30%" <?= set_select('id_modelo', 'cc6d6025-2b9d-4e1a-ad7f-0b3ba72c838b') ?>>IND - PLASC 2 30%</option>
+          <option value="32d2cd20-fd62-49d1-8d60-792f07913191|IND - PLASC 2 50%" <?= set_select('id_modelo', '32d2cd20-fd62-49d1-8d60-792f07913191') ?>>IND - PLASC 2 50%</option>
+          <option value="d99e17e7-dccf-4afb-b19b-f8d23f0a2aa9|IND REF - MULTIPLASC X - COPART ENF" <?= set_select('id_modelo', 'd99e17e7-dccf-4afb-b19b-f8d23f0a2aa9') ?>>IND REF - MULTIPLASC X - COPART ENF</option>
         </select>
       </label>
     </div>
@@ -104,3 +104,4 @@
     </div>
   </form>
 </div>
+</main>

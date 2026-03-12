@@ -1,37 +1,5 @@
 
-* {
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
-}
 
-html {
-  height: 100%;
-  font-size: 16px;
-}
-
-body {
-  height: 100%;
-  background: #F3F4F8;
-}
-
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 60px;
-  background: white;
-  box-shadow: inset 0 -1px 0 0 #edeef4;
-}
-
-aside {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 200px;
-  background: #046cc2;
-  
-}
 aside .brand {
   padding: 5px 10px 5px;
 }
@@ -354,18 +322,6 @@ aside ul.nav li.active a {
   }
 }
 
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: #f5f6f7;
-  color: #046cc2;
-  text-align: center;
-  padding: 2px 0;
-  font-size: 14px;
-  z-index: 100;
-}
 .linha-vermelha {
   border: none !important;
   border-top: 3px solid crimson !important;

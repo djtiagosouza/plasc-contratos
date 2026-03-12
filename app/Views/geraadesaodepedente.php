@@ -2,7 +2,7 @@
 <div class="content-container">
     <h1 class="h1">Dados da Adesão</h1>
 
-    <form action="<?= $url_base ?>/GeraAdesoes/Gera_Adesao" method="post" class="form-contrato">
+    <form action="<?= $url_base ?>/GeraAdesoes/Gera_Dependente" method="post" class="form-contrato">
 
         <!-- ==============================
              DADOS DA PROPOSTA
@@ -10,7 +10,7 @@
         <h5>DADOS DA PROPOSTA</h5>
 
         <div class="form-grid">
-            <label>DATA DO VENCIMENTO
+            <label>CONTRATO
                 <select id="dt_vencimento" name="dt_vencimento">
                     <option value="">Selecione...</option>
                     <option value="05" <?= set_select('dt_vencimento', '05'); ?>>DIA 05</option>
@@ -40,7 +40,7 @@
         <!-- ==============================
              DADOS DO TITULAR
         =============================== -->
-        <h5>DADOS DO TITULAR</h5>
+        <h5>DADOS DO DEPENDENTE</h5>
 
         <div class="form-grid">
             <label>Nome

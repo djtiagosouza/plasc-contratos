@@ -127,8 +127,9 @@ public function Templates()
         // }
         // $envelopeId = '7446d0a0-df50-4f5b-91d7-467157833e76';
 
-        $token = '53797467-a4d1-4e76-8726-47b56815d53e';
+        $token = '9180ce47-c7be-4714-8657-b46c550cd203';
         $url = "https://app.clicksign.com/api/v3/envelopes/";
+        $idpasta = '273acdf9-8051-4bf6-92d2-24db34c044e8';
 
         $curl = curl_init($url);
         curl_setopt_array($curl, [

@@ -6,15 +6,15 @@ use CodeIgniter\Controller;
 
 class Clicking extends Controller
 {
-    public function Envelopes()
+    public function Pasta()
     {
-        $envelopeId = $this->request->getPost("envelopeId");
-        if (!$envelopeId) {
-            return 'ID do envelope não informado.';
-        }
+        
+        
 
-        $token = $envelopeId;
-        $url = "https://sandbox.clicksign.com/api/v3/envelopes/{$envelopeId}/requirements";
+        // $token = env('SAND_TOKEN');
+        // $url = env('SAND_URL');
+        $token = env('APP_TOKEN');
+        $url = env('APP_URL_PASTA');
 
         $ch = curl_init($url);
         curl_setopt_array($ch, [
@@ -29,26 +29,28 @@ class Clicking extends Controller
         $response = curl_exec($ch);
         curl_close($ch);
 
-        $data = json_decode($response, true);
+        $dados = json_decode($response, true);
 
-        if (!isset($data['data'])) {
-            return 'Erro ao buscar signatários.';
+        if (!isset($dados['data'])) {
+            return 'Erro para trazer os dados.';
         }
 
-        return view('click_env', ['requisitos' => $data['data']]);
+        return $dados['data'];
     }
 
-     public function Pessoas()
-    {
-         $envelopeId = $this->request->getPost("envelopeId");
-        if (!$envelopeId) {
-            return 'ID do envelope não informado.';
-        }
-        $apiUrl = "https://sandbox.clicksign.com/api/v3/envelopes/$envelopeId/signers";
-        $token = '9180ce47-c7be-4714-8657-b46c550cd203';
 
-        $curl = curl_init($apiUrl);
-        curl_setopt_array($curl, [
+     public function Envelopes()
+    {
+        
+        
+
+        // $token = env('SAND_TOKEN');
+        // $url = env('SAND_URL');
+        $token = env('APP_TOKEN');
+        $url = env('APP_URL_ENVELOPE');
+
+        $ch = curl_init($url);
+        curl_setopt_array($ch, [
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HTTPHEADER => [
                 "Authorization: $token",
@@ -57,17 +59,16 @@ class Clicking extends Controller
             ]
         ]);
 
-        $response = curl_exec($curl);
-        $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-        curl_close($curl);
+        $response = curl_exec($ch);
+        curl_close($ch);
 
-        if ($httpCode !== 200) {
-            return $this->response->setStatusCode($httpCode)->setJSON(['error' => 'Erro ao buscar signatários']);
+        $dados = json_decode($response, true);
+
+        if (!isset($dados['data'])) {
+            return 'Erro para trazer os dados.';
         }
 
-        $data = json_decode($response, true);
-
-        return view('click_pessoas', ['signers' => $data['data']]);
+        return $dados['data'];
     }
 
 }
