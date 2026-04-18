@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Usuario;
 use App\Models\Conexao;
+use App\Models\Registro_Contratos;
 
 
 class GeraContratos extends BaseController
@@ -32,8 +33,8 @@ class GeraContratos extends BaseController
         $nome_pasta = $nome . '-' . $cpf;
 
         $nascimento_formatada = $data_nascimento
-                            ? date('d/m/Y H:i', strtotime($data_nascimento))
-                            : 'N/A';
+            ? date('d/m/Y H:i', strtotime($data_nascimento))
+            : 'N/A';
 
         $valor = $this->request->getPost('id_modelo');
         list($template_id, $template_nome) = explode('|', $valor);
@@ -375,6 +376,33 @@ class GeraContratos extends BaseController
             'template_id' => $template_id,
             'id_titular' => $id_segnatario
         ]);
+
+        $dados_registro = [
+            'id_pasta'       => $folder_id,
+            'id_envelope'    => $id_envelope,
+            'id_template'    => $template_id,
+            'id_segnatario'  => $id_segnatario,
+            'nome_pasta'     => $nome_pasta,
+            'nome_segurado'  => $nome,
+            'nr_cpf'         => $cpf,
+            'template_nome'  => $template_nome,
+            'tp_contrato'    => 'I',
+            'formato_data'   => $formato_data,
+            'ds_status'      => 'A',
+            'cd_vendedor'    => session()->get('cd_matricula')
+
+           
+           
+        ];
+
+        $conexao = new Conexao();
+        $conecta = $conexao->Conecta();
+        $salva_registro = new Registro_Contratos($conecta);
+        $salva_registro->Registro($dados_registro);
+
+        
+
+
         //return $result;
         $this->Ativar($id_envelope, $access_toker);
         $this->Notificacao($id_envelope, $access_toker);
@@ -472,4 +500,6 @@ class GeraContratos extends BaseController
 
         // print_r ($result);
     }
+
+    
 }

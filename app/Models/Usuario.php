@@ -21,6 +21,7 @@ class Usuario extends Model
     $query = "SELECT 
                 u.sn_ativo AS ATIVO,
                 u.nm_usuario AS USUARIO,
+                U.cd_usuario as MATRICULA,
                 DBASGU.fnc_mv2000_hmvpep(u.cd_usuario, :senha) AS SENHA
               FROM 
                 DBASGU.usuarios u,
@@ -48,7 +49,8 @@ class Usuario extends Model
                 
                  return [
                     'usuario' => $row['USUARIO'],
-                    'ativo' => $row['ATIVO']
+                    'ativo' => $row['ATIVO'],
+                    'cd_matricula' => $row['MATRICULA']
                 ];
             } else {
                 return ['erro' => 'Erro desconhecido'];

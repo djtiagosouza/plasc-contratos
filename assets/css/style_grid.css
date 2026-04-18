@@ -17,6 +17,15 @@ html, body {
 
   height: 100vh;
 }
+/* ==========================================================================
+   CONFIGURAÇÃO DO ASIDE (PAI)
+   ========================================================================== */
+.grid-aside {
+  position: relative; 
+  padding-top: 0 !important; 
+  display: flex;
+  flex-direction: column;
+}
 
 /* Base */
 .grid {
@@ -27,7 +36,7 @@ html, body {
 /* Áreas */
 .grid-header {
   grid-area: header;
-  background: #ec3608;
+  background: #f1f0f0;
   text-align: center;
   
 }
@@ -37,13 +46,6 @@ html, body {
   overflow-y: auto; /* 🔥 Só o main rola */
  
 }
-
-.grid-aside {
-  grid-area: aside;
-  overflow: hidden; /* impede rolagem */
-  background: #18aff5;
-}
-
 .grid-footer {
   grid-area: footer;
   background: #ec3608;

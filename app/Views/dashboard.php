@@ -58,6 +58,7 @@
             <table class="tabela-envelopes">
                 <thead>
                     <tr>
+                        <th>Nome</th>
                         <th>ID</th>
                         <th>Nome</th>
                         <th>Status</th>
@@ -67,6 +68,13 @@
                     </tr>
                 </thead>
                 <tbody>
+
+                    <?php
+                    $mapaPastas = [];
+                    foreach ($pasta as $p) {
+                        $mapaPastas[$p['id']] = $p['attributes']['name'];
+                    }
+                    ?>
 
                     <?php foreach ($consulta as $req):
 
@@ -87,7 +95,7 @@
 
                         $status2 = $req['tp_status'] ?? '';
                         //teste
-                        $status2 = 'A';
+                        $status2 = 'P';
 
                         $statusBanco = [
                             'P' => 'Aprovação',
@@ -100,10 +108,15 @@
 
                     ?>
 
-                        <tr class="linha-envelope"
-                            data-nome="<?= strtolower($req['attributes']['name'] ?? '') ?>"
+                        <tr class="linha-envelope" data-nome="<?= strtolower($req['attributes']['name'] ?? '') ?>"
                             data-status="<?= $status ?>">
 
+                            <td>
+                                <?php foreach ($pasta as $p): ?>
+                                    <?= $p['attributes']['name']; ?>
+                                <?php endforeach; ?>
+                            </td>
+                        
                             <td><?= $req['id'] ?? 'N/A' ?></td>
                             <td><?= $req['attributes']['name'] ?? 'N/A' ?></td>
                             <td class="<?= $statusClasse ?>">
@@ -120,9 +133,8 @@
                             </td>
 
                             <td>
-                                <?php if ($status2 == 'P'): ?>
-                                    <button class="btn-enviar"
-                                        data-id="<?= $req['id'] ?>">
+                                <?php if ($status2 == 'A'): ?>
+                                    <button class="btn-enviar" data-id="<?= $req['id'] ?>">
                                         Enviar
                                     </button>
                                 <?php endif; ?>

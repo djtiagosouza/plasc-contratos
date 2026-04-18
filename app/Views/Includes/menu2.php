@@ -1,6 +1,6 @@
 <aside class="grid grid-aside">
     <div class="brand">
-        <a href="<?= $url_base?>/home/Dashboard">Plasc</a>
+        <a href="<?= $url_base ?>/home/Dashboard">Plasc</a>
 
     </div>
 
@@ -73,8 +73,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<?= $url_base ?>/home/GeraDependente">
-                         <svg class="lnr lnr-users">
+                    <a href="<?= $url_base ?>/home/BuscaContratos">
+                        <svg class="lnr lnr-users">
                             <use xlink:href="#lnr-users"></use>
                         </svg>
                         Adesão

@@ -11,10 +11,10 @@ class Clicking extends Controller
         
         
 
-        // $token = env('SAND_TOKEN');
-        // $url = env('SAND_URL');
-        $token = env('APP_TOKEN');
-        $url = env('APP_URL_PASTA');
+       $token = env('SAND_TOKEN');
+       $url = env('SAND_URL');
+        //$token = env('APP_TOKEN');
+        //$url = env('APP_URL_PASTA');
 
         $ch = curl_init($url);
         curl_setopt_array($ch, [
@@ -44,10 +44,10 @@ class Clicking extends Controller
         
         
 
-        // $token = env('SAND_TOKEN');
-        // $url = env('SAND_URL');
-        $token = env('APP_TOKEN');
-        $url = env('APP_URL_ENVELOPE');
+        $token = env('SAND_TOKEN');
+        $url = env('SAND_URL');
+        //$token = env('APP_TOKEN');
+        //$url = env('APP_URL_ENVELOPE');
 
         $ch = curl_init($url);
         curl_setopt_array($ch, [
@@ -70,5 +70,7 @@ class Clicking extends Controller
 
         return $dados['data'];
     }
+
+    
 
 }

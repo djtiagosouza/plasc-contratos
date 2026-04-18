@@ -1,229 +1,151 @@
 <main class="grid grid-main">
-<div class="content-container">
-    <h1 class="h1">Dados da Adesão</h1>
+    <div class="content-container">
+        <h1 class="h1">Adesão de depedente</h1>
 
-    <form action="<?= $url_base ?>/GeraAdesoes/Gera_Dependente" method="post" class="form-contrato">
+        <form action="<?= $url_base ?>/GeraAdesoes/Gera_Proposta_Dependente" method="post" class="form-contrato">
 
-        <!-- ==============================
+            <!-- ==============================
              DADOS DA PROPOSTA
         =============================== -->
-        <h5>DADOS DA PROPOSTA</h5>
+            <h5>DADOS DA PROPOSTA</h5>
 
-        <div class="form-grid">
-            <label>CONTRATO
-                <select id="dt_vencimento" name="dt_vencimento">
-                    <option value="">Selecione...</option>
-                    <option value="05" <?= set_select('dt_vencimento', '05'); ?>>DIA 05</option>
-                    <option value="10" <?= set_select('dt_vencimento', '10'); ?>>DIA 10</option>
-                    <option value="15" <?= set_select('dt_vencimento', '15'); ?>>DIA 15</option>
-                    <option value="20" <?= set_select('dt_vencimento', '20'); ?>>DIA 20</option>
-                    <option value="25" <?= set_select('dt_vencimento', '25'); ?>>DIA 25</option>
-                    <option value="30" <?= set_select('dt_vencimento', '30'); ?>>DIA 30</option>
-                </select>
-            </label>
+            <div class="form-grid">
+                <label>CONTRATO
+                    <input type="text" name="contrato" required
+                        value="<?= old('contrato') ?? session('contrato') ?>">
+                </label>
 
-            <label>UNIDADE DE VENDA
-                <select id="unidade_venda" name="unidade_venda">
-                    <option value="">Selecione...</option>
-                    <option value="1" <?= set_select('unidade_venda', '1'); ?>>UNIDADE RIO BRANCO</option>
-                    <option value="2" <?= set_select('unidade_venda', '2'); ?>>UNIDADE SANTA CASA</option>
-                    <option value="3" <?= set_select('unidade_venda', '3'); ?>>UNIDADE BRAZ BERNARDINO</option>
-                    <option value="4" <?= set_select('unidade_venda', '4'); ?>>SANTOS DUMONT</option>
-                    <option value="5" <?= set_select('unidade_venda', '5'); ?>>RIO POMBA</option>
-                    <option value="6" <?= set_select('unidade_venda', '6'); ?>>LIMA DUARTE</option>
-                    <option value="7" <?= set_select('unidade_venda', '7'); ?>>UNIDADE BENFICA</option>
-                    <option value="8" <?= set_select('unidade_venda', '8'); ?>>SAO JOAO NEPOMUCENO</option>
-                </select>
-            </label>
-        </div>
+                <label>PROPOSTA
+                    <input type="text" name="proposta" required
+                        value="<?= old('proposta') ?? $proposta ?>">
+                </label>
 
-        <!-- ==============================
-             DADOS DO TITULAR
-        =============================== -->
-        <h5>DADOS DO DEPENDENTE</h5>
+                <label>PLANO
+                    <input type="text" name="plano" required
+                        value="<?= old('plano') ?? $dadoscontrato['CD_PLANO'] ?>">
+                </label>
 
-        <div class="form-grid">
-            <label>Nome
-                <input type="text" name="nome" required value="<?= set_value('nome') ?>">
-            </label>
+                <label>Tabela de Preço
+                    <input type="text" name="tabelapreco" required
+                        value="<?= old('tabelapreco') ?? $dadoscontrato['CD_TABELA_PRECO'] ?>">
+                </label>
 
-            <label>Data de Nascimento
-                <input type="date" name="data_nascimento" value="<?= set_value('data_nascimento') ?>">
-            </label>
-
-            <label>Telefone
-                <input type="text" name="telefone" value="<?= set_value('telefone') ?>">
-            </label>
-
-            <label>Nome da Mãe
-                <input type="text" name="mae" value="<?= set_value('mae') ?>">
-            </label>
-
-            <label>Nome do Pai
-                <input type="text" name="pai" value="<?= set_value('pai') ?>">
-            </label>
-
-            <label>CPF
-                <input type="text" name="cpf" value="<?= set_value('cpf') ?>">
-            </label>
-
-            <label>CNS
-                <input type="text" name="cns" value="<?= set_value('cns') ?>">
-            </label>
-
-            <label>Sexo
-                <select name="sexo">
-                    <option value="">Selecione...</option>
-                    <option value="M" <?= set_select('sexo', 'M'); ?>>Masculino</option>
-                    <option value="F" <?= set_select('sexo', 'F'); ?>>Feminino</option>
-                    <option value="O" <?= set_select('sexo', 'O'); ?>>Outro</option>
-                </select>
-            </label>
-
-            <label>Estado Civil
-                <select id="estado_civil" name="estado_civil">
-                    <option value="">Selecione...</option>
-                    <option value="S" <?= set_select('estado_civil', 'S'); ?>>Solteiro(a)</option>
-                    <option value="C" <?= set_select('estado_civil', 'C'); ?>>Casado(a)</option>
-                    <option value="D" <?= set_select('estado_civil', 'D'); ?>>Divorciado(a)</option>
-                    <option value="V" <?= set_select('estado_civil', 'V'); ?>>Viúvo(a)</option>
-                    <option value="O" <?= set_select('estado_civil', 'O'); ?>>Outros</option>
-                </select>
-            </label>
-
-            <label>Endereço
-                <input type="text" name="endereco" value="<?= set_value('endereco') ?>">
-            </label>
-
-            <label>Bairro
-                <input type="text" name="bairro" value="<?= set_value('bairro') ?>">
-            </label>
-
-            <label>Município
-                <input type="text" name="municipio" value="<?= set_value('municipio') ?>">
-            </label>
-
-            <label>UF
-                <input type="text" name="uf" maxlength="2" value="<?= set_value('uf') ?>">
-            </label>
-
-            <label>CEP
-                <input type="text" name="cep" value="<?= set_value('cep') ?>">
-            </label>
-
-            <label>Número
-                <input type="text" name="numero" value="<?= set_value('numero') ?>">
-            </label>
-
-            <label>Complemento
-                <input type="text" name="complemento" value="<?= set_value('complemento') ?>">
-            </label>
-
-            <label>Email
-                <input type="text" name="email" value="<?= set_value('email') ?>">
-            </label>
-        </div>
-
-        <!-- ==============================
-             DEPENDENTES
-        =============================== -->
-        <div id="dependentes-container">
-
-            <!-- TEMPLATE DO DEPENDENTE (oculto) -->
-            <div id="dependente-template" style="display:none;">
-                <div class="dependente">
-                    <hr>
-                    <h5>Dependente</h5>
-
-                    <div class="form-grid">
-
-                        <label>Nome
-                            <input type="text" name="dependente[nome][]">
-                        </label>
-
-                        <label>Data de Nascimento
-                            <input type="date" name="dependente[data_nascimento][]">
-                        </label>
-
-                        <label>Telefone
-                            <input type="text" name="dependente[telefone][]">
-                        </label>
-
-                        <label>Nome da Mãe
-                            <input type="text" name="dependente[mae][]">
-                        </label>
-
-                        <label>Nome do Pai
-                            <input type="text" name="dependente[pai][]">
-                        </label>
-
-                        <label>CPF
-                            <input type="text" name="dependente[cpf][]">
-                        </label>
-
-                        <label>CNS
-                            <input type="text" name="dependente[cns][]">
-                        </label>
-
-                        <label>Sexo
-                            <select name="dependente[sexo][]">
-                                <option value="">Selecione...</option>
-                                <option value="M">Masculino</option>
-                                <option value="F">Feminino</option>
-                                <option value="O">Outro</option>
-                            </select>
-                        </label>
-
-                        <label>Estado Civil
-                            <select name="dependente[estado_civil][]">
-                                <option value="">Selecione...</option>
-                                <option value="S">Solteiro(a)</option>
-                                <option value="C">Casado(a)</option>
-                                <option value="D">Divorciado(a)</option>
-                                <option value="V">Viúvo(a)</option>
-                                <option value="O">Outros</option>
-                            </select>
-                        </label>
-
-                        <label>Parentesco
-                            <select name="dependente[parentesco][]">
-                                <option value="">Selecione...</option>
-                                <option value="D">conjuge</option>
-                                <option value="D">filho</option>
-                                <option value="D">filha</option>
-                            </select>
-                        </label>
-
-                        <label>Email
-                            <input type="text" name="dependente[email][]">
-                        </label>
-                    </div>
-
-                    <!-- Apenas botão remover -->
-                    <div class="botoes-form">
-                        <button type="button" class="btn remove">Remover</button>
-                    </div>
-                    <hr>
-                </div>
+                <label>UNIDADE DE VENDA
+                    <select name="unidade_venda" required>
+                        <option value="">Selecione...</option>
+                        <option value="1" <?= old('unidade_venda') == '1' ? 'selected' : '' ?>>UNIDADE RIO BRANCO</option>
+                        <option value="2" <?= old('unidade_venda') == '2' ? 'selected' : '' ?>>UNIDADE SANTA CASA</option>
+                        <option value="3" <?= old('unidade_venda') == '3' ? 'selected' : '' ?>>UNIDADE BRAZ BERNARDINO</option>
+                        <option value="4" <?= old('unidade_venda') == '4' ? 'selected' : '' ?>>SANTOS DUMONT</option>
+                        <option value="5" <?= old('unidade_venda') == '5' ? 'selected' : '' ?>>SAO JOAO NEPOMUCENO</option>
+                        <option value="6" <?= old('unidade_venda') == '6' ? 'selected' : '' ?>>LIMA DUARTE</option>
+                        <option value="7" <?= old('unidade_venda') == '7' ? 'selected' : '' ?>>UNIDADE BENFICA</option>
+                        <option value="8" <?= old('unidade_venda') == '8' ? 'selected' : '' ?>>RIO POMBA</option>
+                    </select>
+                </label>
             </div>
 
-        </div>
+            <h5>DADOS DEPENDENTE</h5>
 
-        <!-- ==============================
-             BOTÕES FINAIS DO FORM
-        =============================== -->
-        <div class="botoes-form">
-            <a href="<?= $url_base ?>/home/GeraAdesao" class="btn limpar">Limpar</a>
+            <div class="form-grid">
+                <label>Nome
+                    <input type="text" name="nome" required value="<?= old('nome') ?>">
+                </label>
 
-            <button type="button" id="add-dependente" class="btn incluir">
-                Incluir Dependente
-            </button>
+                <label>Data de Nascimento
+                    <input type="date" name="data_nascimento" required value="<?= old('data_nascimento') ?>">
+                </label>
 
-            <button type="submit" class="btn enviar">
-                Enviar
-            </button>
-        </div>
+                <label>Telefone
+                    <input type="text" name="telefone" required value="<?= old('telefone') ?>">
+                </label>
 
-    </form>
-</div>
+                <label>Nome da Mãe
+                    <input type="text" name="mae" required value="<?= old('mae') ?>">
+                </label>
+
+                <label>Nome do Pai
+                    <input type="text" name="pai" value="<?= old('pai') ?>">
+                </label>
+
+                <label>CPF
+                    <input type="text" name="cpf" required value="<?= old('cpf') ?>">
+                </label>
+
+                <label>CNS
+                    <input type="text" name="cns" required value="<?= old('cns') ?>">
+                </label>
+
+                <label>Sexo
+                    <select name="sexo" required>
+                        <option value="">Selecione...</option>
+                        <option value="M" <?= old('sexo') == 'M' ? 'selected' : '' ?>>Masculino</option>
+                        <option value="F" <?= old('sexo') == 'F' ? 'selected' : '' ?>>Feminino</option>
+                        <option value="O" <?= old('sexo') == 'O' ? 'selected' : '' ?>>Outro</option>
+                    </select>
+                </label>
+
+                <label>Estado Civil
+                    <select name="estado_civil" required>
+                        <option value="">Selecione...</option>
+                        <option value="S" <?= old('estado_civil') == 'S' ? 'selected' : '' ?>>Solteiro(a)</option>
+                        <option value="C" <?= old('estado_civil') == 'C' ? 'selected' : '' ?>>Casado(a)</option>
+                        <option value="D" <?= old('estado_civil') == 'D' ? 'selected' : '' ?>>Divorciado(a)</option>
+                        <option value="V" <?= old('estado_civil') == 'V' ? 'selected' : '' ?>>Viúvo(a)</option>
+                        <option value="O" <?= old('estado_civil') == 'O' ? 'selected' : '' ?>>Outros</option>
+                    </select>
+                </label>
+
+                <label>Endereço
+                    <input type="text" name="endereco" required value="<?= old('endereco') ?>">
+                </label>
+
+                <label>Bairro
+                    <input type="text" name="bairro" required value="<?= old('bairro') ?>">
+                </label>
+
+                <label>Município
+                    <input type="text" name="municipio" required value="<?= old('municipio') ?>">
+                </label>
+
+                <label>UF
+                    <input type="text" name="uf" maxlength="2" required value="<?= old('uf') ?>">
+                </label>
+
+                <label>CEP
+                    <input type="text" name="cep" required value="<?= old('cep') ?>">
+                </label>
+
+                <label>Número
+                    <input type="text" name="numero" required value="<?= old('numero') ?>">
+                </label>
+
+                <label>Complemento
+                    <input type="text" name="complemento" value="<?= old('complemento') ?>">
+                </label>
+
+                <label>Email
+                    <input type="email" name="email" required value="<?= old('email') ?>">
+                </label>
+
+                <label>Parentesco
+                    <select name="parentesco" required>
+                        <option value="">Selecione...</option>
+                        <option value="3" <?= old('parentesco') == '3' ? 'selected' : '' ?>>Cônjuge</option>
+                        <option value="4" <?= old('parentesco') == '4' ? 'selected' : '' ?>>Filho</option>
+                        <option value="5" <?= old('parentesco') == '5' ? 'selected' : '' ?>>Filha</option>
+                    </select>
+                </label>
+            </div>
+
+
+            <div class="botoes-form">
+
+                <button type="submit" class="btn enviar">
+                    Enviar
+                </button>
+            </div>
+
+        </form>
+    </div>
 </main>

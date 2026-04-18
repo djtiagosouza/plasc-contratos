@@ -127,6 +127,7 @@ class GeraAdesoes extends BaseController
         $usuarioLogado = session()->get('usuario_logado');
         $conexao = new Conexao();
         $conecta = $conexao->Conecta();
+        //$conecta = $conexao->Conectasml();
         $adesao = new Adesao($conecta);
 
         $cd_proposta = $adesao->CriaProposta($dados_proposta['dt_vencimento']);
@@ -201,24 +202,117 @@ class GeraAdesoes extends BaseController
     public function Gera_Dependente()
     {
 
-        //variaveis de controle
-        helper('form');
-        $dependentes = $this->request->getPost('dependente');
+        $dependente = [
+            'nome'            => $this->limparTexto($this->request->getPost('nome')),
+            'data_nascimento' => $this->limparData($this->request->getPost('data_nascimento')),
+            'telefone'        => $this->apenasNumeros($this->request->getPost('telefone')),
+            'mae'             => $this->limparTexto($this->request->getPost('mae')),
+            'pai'             => $this->limparTexto($this->request->getPost('pai')),
+            'cpf'             => $this->apenasNumeros($this->request->getPost('cpf')),
+            'cns'             => $this->apenasNumeros($this->request->getPost('cns')),
+            'sexo'            => $this->limparTexto($this->request->getPost('sexo')),
+            'estado_civil'    => $this->limparTexto($this->request->getPost('estado_civil')),
+            'endereco'        => $this->limparTexto($this->request->getPost('endereco')),
+            'bairro'          => $this->limparTexto($this->request->getPost('bairro')),
+            'municipio'       => $this->limparTexto($this->request->getPost('municipio')),
+            'uf'              => $this->limparTexto($this->request->getPost('uf')),
+            'cep'             => $this->apenasNumeros($this->request->getPost('cep')),
+            'numero'          => $this->limparTexto($this->request->getPost('numero')),
+            'complemento'     => $this->limparTexto($this->request->getPost('complemento')),
+            'email'           => $this->limparEmail($this->request->getPost('email')),
+        ];
+
+
+        $dados_proposta = [
+            'unidade_venda' => $this->request->getPost('unidade_venda'),
+            'contrato' => $this->request->getPost('contrato'),
+            'parentesco' => $this->request->getPost('parentesco')
+
+
+        ];
 
         $usuarioLogado = session()->get('usuario_logado');
+        $conexao = new Conexao();
+        $conecta = $conexao->Conecta();
+        //$conecta = $conexao->Conectasml();
+        $adesao = new Adesao($conecta);
 
-        foreach ($dependentes['nome'] as $i => $nome) {
 
-            $data_nascimento = $dependentes['data_nascimento'][$i];
-            $sexo = $dependentes['sexo'][$i];
-            $cpf = $dependentes['cpf'][$i];
-            $cns = $dependentes['cns'][$i];
-            $telefone = $dependentes['telefone'][$i];
-            $mae = $dependentes['mae'][$i];
-            $pai = $dependentes['pai'][$i];
-            $estado_civil = $dependentes['estado_civil'][$i];
-            $parentesco = $dependentes['parentesco'][$i];
-            $email = $dependentes['email'][$i];
-        }
+        $adesao->criadependente($dados_proposta, $dependente);
+
+
+        
+            $mensagem = "Dependente criados com sucesso";
+        
+
+        $data = [
+            "url_base" => base_url(),
+            "titulo" => 'Plasc-contratos',
+            "usuario" => $usuarioLogado,
+            "mensagem" => $mensagem,
+            "proposta" => $cd_proposta
+        ];
+
+        echo view('Includes/head', $data);
+        echo view('Includes/menu2', $data);
+        echo view("notificacao", $data,);
+        echo view('Includes/footer', $data);
+    }
+    
+        public function Gera_Proposta_Dependente()
+    {
+
+        $dependente = [
+            'contrato'        => $this->request->getPost('contrato'),
+            'proposta'        => $this->request->getPost('proposta'),
+            'plano'           => $this->request->getPost('plano'),
+            'tabelapreco'     => $this->request->getPost('tabelapreco'),
+            'unidade_venda'   => $this->request->getPost('unidade_venda'),
+            'nome'            => $this->limparTexto($this->request->getPost('nome')),
+            'data_nascimento' => $this->limparData($this->request->getPost('data_nascimento')),
+            'telefone'        => $this->apenasNumeros($this->request->getPost('telefone')),
+            'mae'             => $this->limparTexto($this->request->getPost('mae')),
+            'pai'             => $this->limparTexto($this->request->getPost('pai')),
+            'cpf'             => $this->apenasNumeros($this->request->getPost('cpf')),
+            'cns'             => $this->apenasNumeros($this->request->getPost('cns')),
+            'sexo'            => $this->limparTexto($this->request->getPost('sexo')),
+            'estado_civil'    => $this->limparTexto($this->request->getPost('estado_civil')),
+            'endereco'        => $this->limparTexto($this->request->getPost('endereco')),
+            'bairro'          => $this->limparTexto($this->request->getPost('bairro')),
+            'municipio'       => $this->limparTexto($this->request->getPost('municipio')),
+            'uf'              => $this->limparTexto($this->request->getPost('uf')),
+            'cep'             => $this->apenasNumeros($this->request->getPost('cep')),
+            'numero'          => $this->limparTexto($this->request->getPost('numero')),
+            'complemento'     => $this->limparTexto($this->request->getPost('complemento')),
+            'email'           => $this->limparEmail($this->request->getPost('email')),
+            'parentesco'      => $this->request->getPost('parentesco'),
+        ];
+
+        $usuarioLogado = session()->get('usuario_logado');
+        $conexao = new Conexao();
+        $conecta = $conexao->Conecta();
+        //$conecta = $conexao->Conectasml();
+        $adesao = new Adesao($conecta);
+
+
+        $cd_proposta_usuario = $adesao->Gera_Proposta_Usuario_Dependente($dependente);
+
+        
+        
+        $mensagem = "Dependente criados com sucesso n° Proposta. $cd_proposta_usuario";
+       
+
+        $data = [
+            "url_base" => base_url(),
+            "titulo" => 'Plasc-contratos',
+            "usuario" => $usuarioLogado,
+            "mensagem" => $mensagem
+           
+        ];
+
+        echo view('Includes/head', $data);
+        echo view('Includes/menu2', $data);
+        echo view("notificacao", $data,);
+        echo view('Includes/footer', $data);
     }
 }

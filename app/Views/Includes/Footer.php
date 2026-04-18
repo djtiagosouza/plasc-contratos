@@ -85,23 +85,29 @@
         const texto = busca.value.toLowerCase();
 
         document.querySelectorAll('.linha-envelope').forEach(row => {
-            const nome = row.dataset.nome;
-            const status = row.dataset.status;
+            const nome = (row.dataset.nome || "").toLowerCase();
+            const cpf = (row.dataset.cpf || "");
+            const template = (row.dataset.template || "").toLowerCase();
+            const status = row.dataset.status || "";
 
-            const matchNome = nome.includes(texto);
-            const matchStatus = statusFiltro === "" || status === statusFiltro;
+            const matchTexto =
+                nome.includes(texto) ||
+                cpf.includes(texto) ||
+                template.includes(texto);
 
-            row.style.display = (matchNome && matchStatus) ? "" : "none";
+            const matchStatus =
+                statusFiltro === "" || status === statusFiltro;
+
+            row.style.display = (matchTexto && matchStatus) ? "" : "none";
         });
     }
 
-    // Busca por nome
+    // Busca digitando
     busca.addEventListener('keyup', () => aplicarFiltro());
 
-    // Clique nos cards
+    // Clique nos cards (status)
     cardsResumo.forEach(card => {
         card.addEventListener('click', () => {
-
             cardsResumo.forEach(c => c.classList.remove('ativo'));
             card.classList.add('ativo');
 

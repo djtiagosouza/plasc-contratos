@@ -226,3 +226,23 @@
   background: #dc3545;
 }
 
+.btn-enviar {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.btn-enviar:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+.btn-enviar:active {
+    transform: scale(0.98);
+}
